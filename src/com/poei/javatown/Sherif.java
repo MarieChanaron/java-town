@@ -2,7 +2,7 @@ package com.poei.javatown;
 
 public class Sherif extends Cowboy {
 
-    private int nbBrigandsCoffres = 6;
+    private int nbBrigandsCoffres;
 
     Sherif(String nom, int popularite, int nbBrigandsCoffres) {
         super(nom, popularite);
@@ -10,14 +10,14 @@ public class Sherif extends Cowboy {
         this.nbBrigandsCoffres = nbBrigandsCoffres;
     }
 
-    public void coffrer(Brigand brigand) {
+    public void coffrer(HorsLaLoi horsLaLoi) {
         this.parler("Au nom de la loi, je vous arrête !");
     }
 
-    public void rechercher(Brigand brigand) {
+    public void rechercher(HorsLaLoi horsLaLoi) {
         System.out.println(this.quelEstTonNom() + " placarde une affiche dans toute la ville.");
-        brigand.setMiseAPrix(brigand.getMiseAPrix() * 2);
-        this.parler("OYEZ OYEZ BRAVES GENS !! " + brigand.getMiseAPrix() + "$ à qui arrêtera " + brigand.quelEstTonNom() + ", mort ou vif !!");
+        horsLaLoi.setMiseAPrix(horsLaLoi.getMiseAPrix() * 2);
+        this.parler("OYEZ OYEZ BRAVES GENS !! " + horsLaLoi.getMiseAPrix() + "$ à qui arrêtera " + horsLaLoi.quelEstTonNom() + ", mort ou vif !!");
     }
 
     @Override
@@ -33,4 +33,7 @@ public class Sherif extends Cowboy {
         this.parler("J'ai coffré " + this.nbBrigandsCoffres + " brigands et libéré " + super.popularite + " dames.");
     }
 
+    public int getNbBrigandsCoffres() {
+        return this.nbBrigandsCoffres;
+    }
 }

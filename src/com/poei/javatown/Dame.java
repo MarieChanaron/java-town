@@ -40,6 +40,10 @@ public class Dame extends Humain {
         this.parler("Comment pourrais-je assez te remercier, " + cowboy.getCaracteristique() + " " + cowboy.quelEstTonNom() + " ?");
     }
 
+    public void setCouleurRobe(String couleurRobe) {
+        this.couleurRobe = couleurRobe;
+    }
+
     public void changerRobe(String couleur) {
         this.couleurRobe = couleur;
         this.parler("Regardez ma nouvelle robe " + this.couleurRobe + " !");

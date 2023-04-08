@@ -34,8 +34,8 @@ public class Cowboy extends Humain {
         this.parler("Prends ça, rascal !");
     }
 
-    public void tirer(Brigand brigand) {
-        this.parler("Le " + this.caracteristique + " " + this.quelEstTonNom() + " tire sur " + brigand.quelEstTonNom() + ". PAN !");
+    public void tirer(HorsLaLoi horsLaLoi) {
+        this.parler("Le " + this.caracteristique + " " + this.quelEstTonNom() + " tire sur " + horsLaLoi.quelEstTonNom() + ". PAN !");
     }
 
 }

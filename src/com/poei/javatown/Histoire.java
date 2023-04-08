@@ -8,11 +8,14 @@ public class Histoire {
         john.sePresenter();
         john.boire();
 
+        Humain michael = new Humain("Michael");
+        michael.sePresenter();
+
         Dame kate = new Dame("Kate");
         kate.sePresenter();
         kate.boire();
 
-        Brigand bob = new Brigand("Bob");
+        Brigand bob = new Brigand("Bob", 5);
         bob.sePresenter();
         bob.boire();
 
@@ -30,5 +33,8 @@ public class Histoire {
         Sherif clint = new Sherif("Clint", 9, 6);
         clint.sePresenter();
         clint.rechercher(bob);
+
+        Ripoux bill = new Ripoux("Bill", 2, 1, 6);
+        bill.sePresenter();
     }
 }
