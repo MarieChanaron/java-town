@@ -1,6 +1,6 @@
 package com.poei.javatown;
 
-public class Cowboy extends Humain {
+public class Cowboy extends Humain implements VisagePale {
 
     protected int popularite;
     protected String caracteristique = "vaillant";
@@ -18,7 +18,7 @@ public class Cowboy extends Humain {
     @Override
     public void sePresenter() {
         super.sePresenter();
-        this.parler("On dit que je suis le plus " + this.caracteristique + " de tous les cowboys et j'ai déjà libéré " + this.popularite + " dames !");
+        this.parler("On dit que je suis le plus " + this.caracteristique + " de tous les cowboys et j'ai déjà libéré " + this.popularite + " dame" + (this.popularite > 1 ? "s" : "") + " !");
     }
 
     String getCaracteristique() {
@@ -26,8 +26,10 @@ public class Cowboy extends Humain {
     }
 
     public void liberer(Dame dame) {
-        this.popularite ++;
-        this.parler("Te voilà libérée, ma belle !");
+        if (dame.getEtat()) {
+            this.popularite++;
+            this.parler("Te voilà libérée, ma belle !");
+        }
     }
 
     public void sexclamer() {
@@ -36,6 +38,11 @@ public class Cowboy extends Humain {
 
     public void tirer(HorsLaLoi horsLaLoi) {
         this.parler("Le " + this.caracteristique + " " + this.quelEstTonNom() + " tire sur " + horsLaLoi.quelEstTonNom() + ". PAN !");
+    }
+
+    @Override
+    public void seFaireScalper() {
+        this.parler("Aïe ma tête !");
     }
 
 }

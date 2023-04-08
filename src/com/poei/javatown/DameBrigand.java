@@ -28,8 +28,10 @@ public class DameBrigand extends Dame implements HorsLaLoi {
 
     @Override
     public void kidnapper(Dame dame) {
-        this.nbDamesEnlevees ++;
-        this.parler("Ah ah ! " + dame.quelEstTonNom() + ", la bourse ou la vie !");
+        if (dame.getEtat()) {
+            this.nbDamesEnlevees++;
+            this.parler("Ah ah ! " + dame.quelEstTonNom() + ", la bourse ou la vie !");
+        }
     }
 
     @Override
@@ -45,7 +47,7 @@ public class DameBrigand extends Dame implements HorsLaLoi {
 
     @Override
     public String quelEstTonNom() {
-        return "Miss " + super.quelEstTonNom() + "la " + this.look;
+        return super.quelEstTonNom();
     }
 
 }

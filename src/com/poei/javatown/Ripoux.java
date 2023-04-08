@@ -2,6 +2,7 @@ package com.poei.javatown;
 
 public class Ripoux extends Sherif implements HorsLaLoi {
 
+    private String look = "sournois";
     private int nbDamesEnlevees;
     private int miseAPrix = 100;
     private boolean etat = false; // false : libre / true : emprisonné
@@ -14,14 +15,18 @@ public class Ripoux extends Sherif implements HorsLaLoi {
 
     @Override
     public void seFaireEmprisonner(Sherif sherif) {
-        this.etat = true;
-        this.parler("Damned, je suis fait ! " + sherif.quelEstTonNom() + ", tu m'as eu !");
+        if (!this.etat) {
+            this.etat = true;
+            this.parler("Damned, je suis fait ! " + sherif.quelEstTonNom() + ", tu m'as eu !");
+        }
     }
 
     @Override
     public void kidnapper(Dame dame) {
-        this.nbDamesEnlevees ++;
-        this.parler("Ah ah ! " + dame.quelEstTonNom() + ", tu es mienne désormais.");
+        if (dame.getEtat() && !this.etat) {
+            this.nbDamesEnlevees++;
+            this.parler("Ah ah ! " + dame.quelEstTonNom() + ", tu es mienne désormais.");
+        }
     }
 
     @Override
@@ -43,6 +48,8 @@ public class Ripoux extends Sherif implements HorsLaLoi {
     public void sePresenter() {
         boolean voyelle = Util.estVoyelle(super.getBoissonFavorite().charAt(0));
         this.parler("Bonjour, je suis " + this.quelEstTonNom() + " et j'aime l" + (voyelle ? "'" : "e ") + super.getBoissonFavorite() + ".");
-        this.parler("J'ai coffré " + super.getNbBrigandsCoffres() + " brigands et libéré " + super.popularite + " dames.");
+        this.parler("J'ai coffré " + super.getNbBrigandsCoffres() + " brigand" + (super.getNbBrigandsCoffres() > 1 ? "s" : "") + " et libéré " + super.popularite + " dame" + (super.popularite > 1 ? "s" : "") + ".");
+        this.parler("J'ai l'air " + this.look + " et j'ai déjà kidnappé " + this.nbDamesEnlevees + " dame" + (this.nbDamesEnlevees > 1 ? "s" : "") + " !");
+        this.parler("Ma tête est mise à prix " + this.miseAPrix + "$ !");
     }
 }

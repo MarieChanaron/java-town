@@ -24,7 +24,7 @@ public class Histoire {
         luckyluke.boire();
 
         bob.kidnapper(kate);
-        kate.seFaireKidnapper();
+        kate.seFaireKidnapper(bob);
         luckyluke.tirer(bob);
         luckyluke.sexclamer();
         luckyluke.liberer(kate);
@@ -36,5 +36,19 @@ public class Histoire {
 
         Ripoux bill = new Ripoux("Bill", 2, 1, 6);
         bill.sePresenter();
+
+        DameBrigand calamityJane = new DameBrigand("Calamity Jane", 3);
+        calamityJane.sePresenter();
+        calamityJane.kidnapper(kate);
+        calamityJane.changerRobe("bleue");
+        calamityJane.seFaireEmprisonner(clint);
+
+        Indien teaSpoon = new Indien("Tea Spoon", 100);
+        teaSpoon.sePresenter();
+        teaSpoon.scalper(bill);
+        bill.seFaireScalper();
+
+        clint.coffrer(bob);
+        bill.coffrer(bill);
     }
 }

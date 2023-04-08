@@ -1,6 +1,6 @@
 package com.poei.javatown;
 
-public class Dame extends Humain {
+public class Dame extends Humain implements VisagePale {
 
     private String couleurRobe;
     private boolean etat; // false = libre / true = captive
@@ -20,6 +20,10 @@ public class Dame extends Humain {
         this.couleurRobe = couleurRobe;
     }
 
+    public boolean getEtat() {
+        return this.etat;
+    }
+
     @Override
     public String quelEstTonNom() {
         return "Miss " + super.quelEstTonNom();
@@ -31,7 +35,7 @@ public class Dame extends Humain {
         this.parler("Regardez ma belle robe " + this.couleurRobe + " !");
     }
 
-    public void seFaireKidnapper() {
+    public void seFaireKidnapper(HorsLaLoi horsLaLoi) {
         this.etat = true;
         this.parler("Ooouuuu ! Lâche-moooooiii !!!");
     }
@@ -47,5 +51,10 @@ public class Dame extends Humain {
     public void changerRobe(String couleur) {
         this.couleurRobe = couleur;
         this.parler("Regardez ma nouvelle robe " + this.couleurRobe + " !");
+    }
+
+    @Override
+    public void seFaireScalper() {
+        this.parler("Aïe ma tête !");
     }
 }

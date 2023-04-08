@@ -1,11 +1,12 @@
 package com.poei.javatown;
 
-public class Brigand extends Humain implements HorsLaLoi {
+public class Brigand extends Humain implements HorsLaLoi, VisagePale {
 
     private String look = "méchant";
     private int nbDamesEnlevees;
     private int miseAPrix = 100;
     private boolean etat = false; // false : libre / true : emprisonné
+
 
     Brigand(String nom, int nbDamesEnlevees) {
         super(nom, "tord-boyaux");
@@ -15,6 +16,10 @@ public class Brigand extends Humain implements HorsLaLoi {
     Brigand(String nom, String boissonFavorite, int nbDamesEnlevees) {
         super(nom, boissonFavorite);
         this.nbDamesEnlevees = nbDamesEnlevees;
+    }
+
+    public boolean getEtat() {
+        return this.etat;
     }
 
     @Override
@@ -29,20 +34,24 @@ public class Brigand extends Humain implements HorsLaLoi {
 
     public void sePresenter() {
         super.sePresenter();
-        this.parler("J'ai l'air " + this.look + " et j'ai déjà kidnappé " + this.nbDamesEnlevees + " dames !");
+        this.parler("J'ai l'air " + this.look + " et j'ai déjà kidnappé " + this.nbDamesEnlevees + " dame" + (this.nbDamesEnlevees > 1 ? "s" : "") + " !");
         this.parler("Ma tête est mise à prix " + this.miseAPrix + "$ !");
     }
 
     @Override
     public void kidnapper(Dame dame) {
-        this.nbDamesEnlevees ++;
-        this.parler("Ah ah ! " + dame.quelEstTonNom() + ", tu es mienne désormais.");
+        if (!this.etat) {
+            this.nbDamesEnlevees++;
+            this.parler("Ah ah ! " + dame.quelEstTonNom() + ", tu es mienne désormais.");
+        }
     }
 
     @Override
     public void seFaireEmprisonner(Sherif sherif) {
-        this.etat = true;
-        this.parler("Damned, je suis fait ! " + sherif.quelEstTonNom() + ", tu m'as eu !");
+        if (!this.etat) {
+            this.etat = true;
+            this.parler("Damned, je suis fait ! " + sherif.quelEstTonNom() + ", tu m'as eu !");
+        }
     }
 
     @Override
@@ -50,5 +59,9 @@ public class Brigand extends Humain implements HorsLaLoi {
         return this.miseAPrix;
     }
 
+    @Override
+    public void seFaireScalper() {
+        this.parler("Aïe ma tête !");
+    }
 
 }

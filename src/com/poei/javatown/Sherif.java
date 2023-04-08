@@ -30,7 +30,7 @@ public class Sherif extends Cowboy {
         boolean voyelle = Util.estVoyelle(super.getBoissonFavorite().charAt(0));
         this.parler("Bonjour, je suis " + this.quelEstTonNom() + " et j'aime l" + (voyelle ? "'" : "e ") + super.getBoissonFavorite() + ".");
         this.parler("Tout le monde s'accorde pour dire que je suis " + super.caracteristique + ".");
-        this.parler("J'ai coffré " + this.nbBrigandsCoffres + " brigands et libéré " + super.popularite + " dames.");
+        this.parler("J'ai coffré " + this.nbBrigandsCoffres + " brigand" + (this.nbBrigandsCoffres > 1 ? "s" : "") + " et libéré " + super.popularite + " dame" + (super.popularite > 1 ? "s." : "."));
     }
 
     public int getNbBrigandsCoffres() {

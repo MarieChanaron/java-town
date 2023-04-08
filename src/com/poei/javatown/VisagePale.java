@@ -1,4 +1,7 @@
 package com.poei.javatown;
 
-public class VisagePale {
+public interface VisagePale {
+
+    public void seFaireScalper();
+
 }
