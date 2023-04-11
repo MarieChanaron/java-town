@@ -26,7 +26,7 @@ public class Histoire {
         bob.kidnapper(kate);
         kate.seFaireKidnapper(bob);
         luckyluke.tirer(bob);
-        luckyluke.sexclamer();
+        luckyluke.sexclamer(bob);
         luckyluke.liberer(kate);
         kate.etreLiberee(luckyluke);
 
@@ -40,15 +40,19 @@ public class Histoire {
         DameBrigand calamityJane = new DameBrigand("Calamity Jane", 3);
         calamityJane.sePresenter();
         calamityJane.kidnapper(kate);
+        kate.seFaireKidnapper(calamityJane);
+        System.out.println(calamityJane.quelEstTonNom() + " change de robe.");
         calamityJane.changerRobe("bleue");
+        clint.rechercher(calamityJane);
+        luckyluke.tirer(calamityJane);
+        clint.coffrer(calamityJane);
         calamityJane.seFaireEmprisonner(clint);
 
         Indien teaSpoon = new Indien("Tea Spoon", 100);
         teaSpoon.sePresenter();
         teaSpoon.scalper(bill);
-        bill.seFaireScalper();
+        bill.seFaireScalper(teaSpoon);
 
-        clint.coffrer(bob);
-        bill.coffrer(bill);
+
     }
 }

@@ -7,4 +7,6 @@ public interface HorsLaLoi {
     public int getMiseAPrix();
     public void setMiseAPrix(int miseAPrix);
     public String quelEstTonNom();
+    public boolean getEtat();
+    public void setEtat(boolean etat);
 }

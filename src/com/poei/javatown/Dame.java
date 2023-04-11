@@ -3,7 +3,7 @@ package com.poei.javatown;
 public class Dame extends Humain implements VisagePale {
 
     private String couleurRobe;
-    private boolean etat; // false = libre / true = captive
+    private boolean capturee; // false = libre / true = captive - capturée : pour ne pas confondre avec l'état des brigands (emprisonné)
 
     Dame(String nom) {
         super(nom, "lait");
@@ -20,8 +20,12 @@ public class Dame extends Humain implements VisagePale {
         this.couleurRobe = couleurRobe;
     }
 
-    public boolean getEtat() {
-        return this.etat;
+    public boolean getCapturee() {
+        return this.capturee;
+    }
+
+    public void setCapturee(boolean capturee) {
+        this.capturee = capturee;
     }
 
     @Override
@@ -36,12 +40,15 @@ public class Dame extends Humain implements VisagePale {
     }
 
     public void seFaireKidnapper(HorsLaLoi horsLaLoi) {
-        this.etat = true;
+        this.capturee = true;
         this.parler("Ooouuuu ! Lâche-moooooiii !!!");
     }
 
     public void etreLiberee(Cowboy cowboy) {
-        this.parler("Comment pourrais-je assez te remercier, " + cowboy.getCaracteristique() + " " + cowboy.quelEstTonNom() + " ?");
+        if (this.capturee) {
+            this.parler("Comment pourrais-je assez te remercier, " + cowboy.getCaracteristique() + " " + cowboy.quelEstTonNom() + " ?");
+            this.capturee = false;
+        }
     }
 
     public void setCouleurRobe(String couleurRobe) {
@@ -54,7 +61,7 @@ public class Dame extends Humain implements VisagePale {
     }
 
     @Override
-    public void seFaireScalper() {
+    public void seFaireScalper(Indien indien) {
         this.parler("Aïe ma tête !");
     }
 }

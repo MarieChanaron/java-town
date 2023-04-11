@@ -2,6 +2,6 @@ package com.poei.javatown;
 
 public interface VisagePale {
 
-    public void seFaireScalper();
+    public void seFaireScalper(Indien indien);
 
 }

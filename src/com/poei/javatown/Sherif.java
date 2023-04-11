@@ -11,7 +11,10 @@ public class Sherif extends Cowboy {
     }
 
     public void coffrer(HorsLaLoi horsLaLoi) {
-        this.parler("Au nom de la loi, je vous arrête !");
+        if (!horsLaLoi.getEtat()) {
+            this.parler("Au nom de la loi, je vous arrête !");
+            horsLaLoi.setEtat(true);
+        }
     }
 
     public void rechercher(HorsLaLoi horsLaLoi) {

@@ -26,13 +26,14 @@ public class Cowboy extends Humain implements VisagePale {
     }
 
     public void liberer(Dame dame) {
-        if (dame.getEtat()) {
+        if (dame.getCapturee()) {
             this.popularite++;
             this.parler("Te voilà libérée, ma belle !");
+            dame.setCapturee(false);
         }
     }
 
-    public void sexclamer() {
+    public void sexclamer(HorsLaLoi horsLaLoi) {
         this.parler("Prends ça, rascal !");
     }
 
@@ -41,7 +42,7 @@ public class Cowboy extends Humain implements VisagePale {
     }
 
     @Override
-    public void seFaireScalper() {
+    public void seFaireScalper(Indien indien) {
         this.parler("Aïe ma tête !");
     }
 
